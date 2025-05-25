@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 
 // Ruta para insertar una reserva
 app.post('/reserva', (req, res) => {
-  const { nombre, fecha, hora, personas } = req.body;
+  const { nombre, numero, fecha, hora, personas, ocasion } = req.body;
 
   const sql = 'INSERT INTO reservas (nombre, fecha, hora, personas) VALUES (?, ?, ?, ?)';
-  db.query(sql, [nombre, fecha, hora, personas], (err, result) => {
+  db.query(sql, [nombre, numero, fecha, hora, personas, ocasion], (err, result) => {
     if (err) {
       console.error('Error al insertar:', err);
       return res.status(500).json({ error: 'Error al guardar la reserva' });
