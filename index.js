@@ -13,10 +13,10 @@ app.get('/', (req, res) => {
 });
 
 // Ruta para insertar una reserva
-app.post('/reserva', (req, res) => {
+app.post('/reservas', (req, res) => {
   const { nombre, numero, fecha, hora, personas, ocasion } = req.body;
 
-  const sql = 'INSERT INTO reservas (nombre, fecha, hora, personas) VALUES (?, ?, ?, ?)';
+  const sql = 'INSERT INTO reservas (nombre, numero, fecha, hora, personas, ocasion) VALUES (?, ?, ?, ?, ?, ?)';
   db.query(sql, [nombre, numero, fecha, hora, personas, ocasion], (err, result) => {
     if (err) {
       console.error('Error al insertar:', err);
