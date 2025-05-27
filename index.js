@@ -18,7 +18,7 @@ app.post('/reservas', (req, res) => {
 
   const query = 'INSERT INTO reservas (nombre, numero, fecha, hora, personas, ocasion) VALUES (?, ?, ?, ?, ?, ?)';
 
-  db.query(query, [nombre, numero, fecha, hora, personas, ocasion], (err, result) => {
+  db.query(query, [nombre, numero, fecha, hora, personas, ocasion], (err, res) => {
     if (err) {
       console.error('Error al insertar reserva:', err);
       return res.status(500).json({ error: 'Error al insertar reserva' });
