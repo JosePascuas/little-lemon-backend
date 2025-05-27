@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/reservas', (req, res) => {
-  const { nombre, numero, fecha, hora, personas, ocasion } = req.body;
+  let { nombre, numero, fecha, hora, personas, ocasion } = req.body;
   console.log("Datos recibidos en backend:", req.body);
 
   const parsedDate = new Date(fecha);
