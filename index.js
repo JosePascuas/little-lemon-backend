@@ -6,7 +6,11 @@ const db = require('./db');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://little-lemon-seven-red.vercel.app', // frontend en Vercel
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -18,7 +22,7 @@ app.post('/reservas', (req, res) => {
 
   const query = 'INSERT INTO reservas (nombre, numero, fecha, hora, personas, ocasion) VALUES (?, ?, ?, ?, ?, ?)';
 
-  db.query(query, [nombre, numero, fecha, hora, personas, ocasion], (err, res) => {
+  db.query(query, [nombre, numero, fecha, hora, personas, ocasion], (err, result) => {
     if (err) {
       console.error('Error al insertar reserva:', err);
       return res.status(500).json({ error: 'Error al insertar reserva' });
