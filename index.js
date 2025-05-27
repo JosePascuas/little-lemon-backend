@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 app.post('/reservas', (req, res) => {
   const { nombre, numero, fecha, hora, personas, ocasion } = req.body;
+  console.log("Datos recibidos en backend:", req.body);
 
   const query = 'INSERT INTO reservas (nombre, numero, fecha, hora, personas, ocasion) VALUES (?, ?, ?, ?, ?, ?)';
 
